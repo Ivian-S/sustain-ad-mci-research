@@ -1,0 +1,89 @@
+# Private and access-controlled research data (never commit)
+/data/
+/datasets/
+/raw_data/
+/raw/
+/derived/
+/derivatives/
+/private/
+/secrets/
+/credentials/
+/clinical/
+/participants/
+/subjects/
+/papers/
+/literature_pdfs/
+
+# Neuroimaging and biomedical files
+*.nii
+*.nii.gz
+*.dcm
+*.ima
+*.mgz
+*.mgh
+*.nrrd
+*.bval
+*.bvec
+*.edf
+*.set
+*.fif
+
+# Large arrays, checkpoints, serialized artifacts
+*.npy
+*.npz
+*.pkl
+*.pickle
+*.joblib
+*.h5
+*.hdf5
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.safetensors
+
+# Outputs / logs / caches
+/outputs/
+/runs/
+/checkpoints/
+/logs/
+/cache/
+/tmp/
+/wandb/
+/mlruns/
+/tensorboard/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+*.log
+
+# Environments and credentials
+.venv/
+venv/
+env/
+.conda/
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+id_ed25519*
+id_rsa*
+*.p12
+*.pfx
+
+# Copyright-controlled paper PDFs (store references instead)
+*.pdf
+
+# Editors and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Note: *.csv, *.tsv, *.json are intentionally NOT globally excluded:
+# configs and safe summary tables may be versioned, but patient-level tables
+# must ALWAYS be stored under ignored data directories and manually reviewed.
