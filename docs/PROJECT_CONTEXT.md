@@ -78,3 +78,25 @@
 ## 9. 交接给新的 AI 会话时
 
 优先提供本文件最新版本、最近修改的 `LITERATURE_MATRIX.md` 和 `EXPERIMENT_LOG.md`，并说明当前要解决的问题。AI 提议必须标注“待核实/待验证”；任何新增事实需有可核查来源。
+
+<!-- BEGIN SUSTAIN_HANDOFF:PROJECT_CONTEXT -->
+## 2026-10-30 阶段性更新：数据可行性审计完成第一轮，准备开题
+
+**研究身份：**山东师范大学计算机技术硕士；研究主题为 AD/MCI 早期脑结构/网络异常模式与认知功能演变，核心方法 SuStaIn。用户研究目标优先级是**稳妥完成导师要求与硕士毕业论文**，不是盲目追求高算法复杂度。
+
+**用户选定的暂定题目（导师尚未最终确认）：**《基于 SuStaIn 的 AD/MCI 脑结构网络与认知功能联合演变建模研究》。
+
+**环境与安全：**Linux GPU 服务器（4×3090、48 CPU 线程）；项目有 `src/ configs/ scripts/ data/ results/data_audit/ docs/`；实验室 ADNI 数据通过**只读 SMB/CIFS**共享挂载到本机，临床宽表在本地 `data/all.xlsx`，不会提交 Git。内部路径保存在**禁止 Git 跟踪**的 `docs/LOCAL_ENV_PRIVATE.md`。
+
+**V3 临床元数据候选交集：**`all.xlsx` 12,758 行、955 列；T1 元数据＋临床诊断±180天＋任一基线认知±90天，共 1,830 名受试者（CU 788、MCI 765、Dementia 277）。MCI 组基线 MMSE 697；MMSE ≥6月随访 539、约12月 416、约24月 269（后两者容差均±180天）。此处尚未验证实际 MRI 文件、影像质量或全样本生物学 AD 状态。
+
+**V4 FreeSurfer 检查：**`processed_data` 已发现 821 个具有 `aseg.stats`、`lh.aparc.stats`、`rh.aparc.stats` 的目录，并发现对应 `norm.mgz`、`aparc+aseg.mgz` 和 `lh.white`；目录路径识别的 PTID 与 Excel 相交的不同受试者为 444 名。V4 各扫描均 `scan_complete=false`，`recon_all_new` 仅扫 369 条目、`T1_nii` 仅扫 2 条目，**不能把二者的零结果解读为缺少影像**。V4 未做真实 MR 图像质量控制、精确访视与诊断/随访配对。
+
+**暂定方法：**利用 T1/FreeSurfer 多形态指标构建**个体形态相似性网络 MSN**（不同于 DTI 白质纤维网络，需导师认可）；M1 形态、M2 形态＋网络、M3 形态＋基线认知、M4 形态＋网络＋基线认知，以 SuStaIn 推断亚型/阶段/潜在异常事件顺序；后续认知轨迹和独立指标作验证。所有训练/测试按受试者划分；不从横断面 SuStaIn 事件次序推断真实年月或因果。
+
+**相近论文边界：**Estarellas 2024 已联合 MRI/PET/CSF/认知做 SuStaIn；Berman 2026 已加入 T1 衍生网络；Baumeister 2024 与 Mao 2026 已研究 SuStaIn 和纵向认知。故创新不能写“首次联合”或“首次关联认知”，而应定位于早期人群的 MSN—认知联合事件模式、四种输入模型的受控对照、网络增量信息、独立纵向验证及稳定性。导师对算法原创性要求仍未确认。
+
+**下一阶段：**开题报告写作；向导师核实 MSN 是否属于要求的“脑结构网络”、是否必须有算法改进、是否限定 A+ 早期 AD；正式实验前定向配对 V4 的 FreeSurfer 记录到 CU/MCI 和 MRI 日期，抽查 QC；核实 Amyloid 状态 0/1 编码。**当前没有已完成的真实模型实验或性能数据。**
+
+详细资料：`docs/AI_HANDOFF.md`、`docs/DATA_AUDIT_SUMMARY.md`、`docs/TOPIC_DECISION.md`、`docs/PROPOSAL_BRIEF.md`；早期 V1.2 审计备忘录不是最终数据结论。
+<!-- END SUSTAIN_HANDOFF:PROJECT_CONTEXT -->

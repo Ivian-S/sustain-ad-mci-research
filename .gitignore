@@ -87,3 +87,26 @@ Thumbs.db
 # Note: *.csv, *.tsv, *.json are intentionally NOT globally excluded:
 # configs and safe summary tables may be versioned, but patient-level tables
 # must ALWAYS be stored under ignored data directories and manually reviewed.
+
+/mounts/
+
+# ADNI audit outputs
+/results/data_audit/
+/data/
+
+<!-- BEGIN SUSTAIN_HANDOFF:DATA_PRIVACY -->
+# Privacy: restricted ADNI clinical and imaging data
+/data/
+/results/data_audit/
+/results/handoff_backups/
+/docs/LOCAL_ENV_PRIVATE.md
+/docs/RECORD.md
+*.nii
+*.nii.gz
+*.dcm
+*.mgz
+*.mgh
+<!-- END SUSTAIN_HANDOFF:DATA_PRIVACY -->
+
+
+docs/RECORD.md

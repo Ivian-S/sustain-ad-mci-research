@@ -54,3 +54,32 @@
 | — | — | — | — | 尚未开展正式实验 | — | — |
 
 所有大型运行日志、原始结果、模型权重和受约束的数据应置于 Git 忽略的专用目录，并在此使用**非敏感的相对路径或数据版本代号**引用。
+
+<!-- BEGIN SUSTAIN_HANDOFF:EXPERIMENT_LOG -->
+## 2026-10-30：数据可行性审计阶段记录（并非模型实验）
+
+状态：已完成多轮候选数据审计；**真实 SuStaIn、MSN、预测模型均尚未训练**。
+
+| 轮次 | 产物 | 审计成果 | 限制 |
+|---|---|---|---|
+| V1 文件盘点 | `01_overview.json`–`04_data.json` | 发现在 SMB ADNI 下的 `data/ processed_data/ raw_data/ recon_all_new/`，FreeSurfer `.stats` 和 `.mgz` 很丰富 | 四次扫描都未完整结束；文件数不是受试者数 |
+| 早期 XLSX 审计（弃用） | `05_all_schema.json`、`06_clinical_cohort.json` | `all.xlsx` 具有 955 个带来源后缀的字段 | 旧脚本只识别了 `PTEDUCAT`，导致大量 null；**不能用于判断缺失** |
+| V2 临床修正 | `07_schema_v2.json`、`08_cohort_v2.json` | 12,758 行、955 列；MMSE 有效 2,890 人，≥2 访视 1,925 人；存在 DXSUM、ADAS13、CDRSB、Amyloid 状态 | 仅受试者/访视覆盖，不证明实际 MRI 可用 |
+| V3 日期匹配 | `09_matched_feasibility_v3.json` | 1,830 名日期匹配候选：CU 788、MCI 765、Dementia 277；MCI MMSE ≥6月随访 539 | 诊断±180天、认知±90天，预测时需防止未来数据泄漏；尚未 MRI 实体/QC 验证 |
+| V4 FS 实体检查 | 用户发来的 `command_out.txt`；推荐归档到 `10_t1_fs_file_match_v4.json` | `processed_data` 已见 821 个完整 `.stats` 三件套目录，涉及 444 个可与 Excel 匹配的不同 PTID | 三处均 `scan_complete=false`；`recon_all_new`、`T1_nii` 几乎未扫描，零值不代表数据缺失；未核实 MCI/CU 分组及 QC |
+
+**数据/隐私约束：**每次只输出汇总统计；`data/all.xlsx` 和影像不入 Git；共享 CIFS 挂载只读；原始研究队列索引若需建立，应保存在受控服务器目录中，不上传公开 Git 或通用聊天。
+
+### 首轮真实实验待开展（计划，不是结果）
+
+| ID | 任务 | 最小可验收成果 | 状态 |
+|---|---|---|---|
+| E0 | 定向匹配真实 FreeSurfer PTID/访视到 V3 临床队列；抽样 QC | 按 CU/MCI/Aβ 状态及随访分层的**QC 后汇总**与数据纳入流程 | 待开始 |
+| E1 | pySuStaIn 模拟示例、T1 形态 M1 | 可复现环境、版本、样本划分、PVD、阶段后验 | 待开始 |
+| E2 | FreeSurfer 多指标个体 MSN | 特征矩阵、网络指标、单调性/稳定性检查 | 待开始 |
+| E3 | M1/M2/M3/M4 同群体对照 | 亚型稳定性、分期事件顺序、模型比较 | 待开始 |
+| E4 | 独立后续认知变化分析 | 纵向 MMSE/ADAS13/CDRSB、效应区间、消融 | 待开始 |
+| E5 | 条件允许时进行留出测试预测 | 临床基线 vs SuStaIn 基线 vs 联合模型 MAE/RMSE/校准 | 可选增强 |
+
+未来每次实验日志须填写：日期/操作者、Git commit、数据快照 ID（受控）、样本纳入数量、train/test 病人列表的安全存放位置、特征定义、参数与随机种子、软件版本、指标/置信区间、失败情况和下一步。没有实际运行不要填虚构数值。
+<!-- END SUSTAIN_HANDOFF:EXPERIMENT_LOG -->

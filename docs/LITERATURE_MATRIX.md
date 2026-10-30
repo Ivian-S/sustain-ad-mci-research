@@ -46,3 +46,23 @@
 ## 4. 检索与引用规范
 
 优先使用论文出版社页面、PubMed、会议/期刊官网、作者正式预印本和官方代码仓库。记录检索日期、搜索式和版本；参考文献最终统一采用学校要求格式。论文 PDF 可以保存在本地受控目录，但不要未经授权提交到 GitHub。
+
+<!-- BEGIN SUSTAIN_HANDOFF:LITERATURE_MATRIX -->
+## 2026-10-30 更新：直接竞争研究与创新边界
+
+> 下列论文是真实可查询的先例。其数据、模型与结论不能被写作本课题的原创成果。详细方法比较见 `docs/TOPIC_DECISION.md`，原始选题论证见 `docs/SuStaIn_AD_MCI_Research_Justification_v1.1.md`。
+
+| 论文 | 文献及来源 | 与课题的直接关系 | 必须避免的重复/我们的拟议切入 |
+|---|---|---|---|
+| Young et al. 2018 | [Nature Communications, SuStaIn 原始论文](https://www.nature.com/articles/s41467-018-05892-0) | 提出亚型/阶段联合推断与潜在事件顺序 | 使用 pySuStaIn 复现，不能宣称提出 SuStaIn |
+| Estarellas et al. 2024 | [Brain Communications, fcae219](https://pmc.ncbi.nlm.nih.gov/articles/PMC11259979/) | ADNI 789 人，MRI＋PET＋CSF＋认知联合 SuStaIn，含 Cognitive 亚型 | **认知加入 SuStaIn 已有人做**；我们拟在 MSN 网络增量、受控对照和未来结果验证上区分 |
+| Baumeister et al. 2024 | [Brain, awae118](https://academic.oup.com/brain/article/147/7/2400/7657064) | MRI SuStaIn、早期人群、纵向认知和跨队列泛化 | **纵向认知外部验证已存在**；不能宣称首创 |
+| Kim et al. 2024 | [Communications Biology](https://www.nature.com/articles/s42003-024-05787-5) | 皮层变薄模式与认知相关性 | 不能仅以脑形态＋认知相关证明独创新意 |
+| Tandon et al. 2025 | [IJMS, 118 ROI／MCI 进展](https://pmc.ncbi.nlm.nih.gov/articles/PMC12193007/) | 解剖学分期与 MCI 进展风险，基线较强 | **MCI 风险预测非首创** |
+| Berman et al. 2026 | [MICCAI MLCN, Network Alterations Precede Atrophy](https://papers.miccai.org/miccai-2026-sat/MLCN_2026_032.html) | ADNI 1,699 人，T1 结构网络指标与萎缩指标共同输入 SuStaIn | **脑网络加入 SuStaIn 已有人做**；强调脑网络＋基线认知的增量/交互和独立纵向结果，而非简单重复网络先于萎缩 |
+| Mao et al. 2026 | [NeuroImage 340:122215](https://doi.org/10.1016/j.neuroimage.2026.122215) | A+ AD 484 人、17 ROI、四亚型，226 人纵向 MMSE；45 人的预后模型比较属模型内解释度 | 与较晚临床 AD 人群区分，做早期 CU/MCI 与网络联合；预测时使用严格留出测试 |
+| Seidlitz et al. 2018 | [Neuron, Morphometric Similarity Networks](https://doi.org/10.1016/j.neuron.2017.11.039) | 个体 MRI 多形态特征构建 MSN 的方法基础 | MSN 不是新发明，需明确数学实现、网络拓扑指标和可靠性 |
+| Aksman et al. 2021 | [SoftwareX pySuStaIn 100811](https://doi.org/10.1016/j.softx.2021.100811) | 可复现官方 Python SuStaIn 工具 | 优先复现官方教程及 Z-score SuStaIn |
+
+**本课题创新强度初评：**直接拼接脑形态、网络、认知属于有限创新的方法组合。通过 M1（形态）、M2（形态＋网络）、M3（形态＋认知）、M4（三者）在同一受试者子集上比较，并用独立未来认知变化与稳健性实验证实增量价值，才可形成可检验的主要研究贡献。是否满足学院算法创新要求仍待导师确认。不要预设 M4 性能一定提高。
+<!-- END SUSTAIN_HANDOFF:LITERATURE_MATRIX -->
